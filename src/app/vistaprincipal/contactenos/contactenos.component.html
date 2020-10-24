@@ -1,0 +1,76 @@
+<app-navbarinicio></app-navbarinicio>
+  <div class="container contact-form">
+    <h1 class="text-center">Formulario de contacto</h1>
+    <hr>
+    <div class="row">
+     
+      <div class="col-md-6 text-justify">
+        <h4>Atencion de Lunes a Viernes 8:00 a.m - 12:00 p.m. Y de 2:00 p.m. a 8:00 p.m</h4>
+        <h4>Sabados, Domingos y festivos de 9:00 a.m - 12:00 p.m. Y de 1:00 p.m. a 6:00 p.m</h4>
+      </div>
+   
+        <div class="col-md-6">
+          <form [formGroup]="myform">
+
+            <div class="form-group">
+              <label>Tipo de Identificación</label>
+             <div>
+               <select class="form-control" formControlName="tipodocumento" id="tipo" name="idtf">
+                 <option selected>Seleccione un Tipo de Documento</option>
+                 <option value="CC">Cédula de Ciudadanía</option>
+                 <option value="CE">Cédula de Extranjería</option>
+                 <option value="NIT">NIT</option>
+                 <option value="PSP">Pasaporte</option>
+               </select>
+              </div>
+           </div>
+      
+           <div class="form-group">
+              <label>Identificación</label>
+              <input  id="us_id" formControlName="identificacion"  type="text" class="form-control">
+             </div>
+      
+      
+         <div class="form-group">
+          <label>Nombre(s) & Apellidos</label>
+          <input type="text" formControlName="nombreapellidos" class="form-control">
+         </div>
+      
+      
+         <div class="form-group">
+          <label>Correo</label>
+          <input  type="text" formControlName="correo" class="form-control">
+         </div>
+      
+         <div class="form-group">
+          <label>Telefono o Celular</label>
+          <input  type="text" formControlName="telefono" class="form-control">
+         </div>
+      
+         <div class="form-group">
+          <label>Tipo de Solicitud</label>
+            <select class="form-control" formControlName="tiposolicitud"  name="idtf2">
+              <option selected>Seleccione un Tipo de Solicitud</option>
+                      <option value="Petición">Petición</option>
+                      <option value="Queja">Queja</option>
+                      <option value="Reclamo">Reclamo</option>
+                      <option value="Sugerencia">Sugerencia</option>
+            </select>
+        </div>
+      
+        <div class="form-group">
+          <label>Mensaje</label>
+          <div>
+            <textarea formControlName="mensaje" class="form-control"></textarea>
+          </div>
+        </div>
+              <button type="submit" [disabled]="myform.invalid"  name="btncalcular" class="btn btn-primary" >Registrar</button>
+          </form>
+            
+       </div>
+        
+    </div>
+  
+  </div>
+  <br>
+  <app-footer></app-footer>
