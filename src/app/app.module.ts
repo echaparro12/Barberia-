@@ -13,6 +13,13 @@ import { LoginComponent } from './login/login.component';
 import { ContactenosComponent } from './vistaprincipal/contactenos/contactenos.component';
 import { HomeComponent } from './vistaprincipal/home/home.component';
 import { ServiciosComponent } from './vistaprincipal/servicios/servicios.component';
+import { BarberoComponent } from './vistaadministrador/barbero/barbero.component';
+import { ClientesComponent } from './vistaadministrador/clientes/clientes.component';
+import { CitasComponent } from './vistaadministrador/citas/citas.component';
+import { MiscitasComponent } from './vistaclientes/miscitas/miscitas.component';
+import { MisdatosComponent } from './vistaclientes/misdatos/misdatos.component';
+import { TurnosComponent } from './vistabarbero/turnos/turnos.component';
+import { CitasUComponent } from './vistaclientes/citas-u/citas-u.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +32,16 @@ import { ServiciosComponent } from './vistaprincipal/servicios/servicios.compone
     LoginComponent,
     ContactenosComponent,
     HomeComponent,
-    ServiciosComponent
+    ServiciosComponent,
+    BarberoComponent,
+    ClientesComponent,
+    CitasComponent,
+    MiscitasComponent,
+    MisdatosComponent,
+    TurnosComponent,
+    CitasUComponent
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,

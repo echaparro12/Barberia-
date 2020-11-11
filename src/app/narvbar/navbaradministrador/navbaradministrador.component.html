@@ -1,1 +1,25 @@
-<p>navbaradministrador works!</p>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" [routerLink]="['/vistaclienteA']" >Barber Elite</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link"  [routerLink]="['/vistaclienteA']">Datos Clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/vistabarberoA']">Datos Barbero</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/vistacitasA']">Citas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/home']">pagina inicio</a>
+          </li>
+        
+      </ul>
+
+    </div>  
+  </nav>
+
