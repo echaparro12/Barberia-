@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,Validator, Validators } from '@angular/forms';
 import {  usuarios } from "src/app/models/usuarios";
+
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
@@ -14,7 +15,7 @@ export class ClientesComponent implements OnInit {
 
    constructor(private _builder:FormBuilder) { 
     this.modalform = this._builder.group({
-      identificacion: ['',[Validators.required,Validators.minLength(8)]],
+      identificacion: ['',[Validators.required,Validators.minLength(8),Validators.pattern('[0-9]{11}')]],
       nombres: ['',[Validators.required]]  ,
       apellidos: ['',[Validators.required]] ,
       correo: ['',[Validators.required,Validators.email]],
@@ -22,7 +23,7 @@ export class ClientesComponent implements OnInit {
     })
 
     this.editarmodal = this._builder.group({
-      identificacion1: ['',[Validators.required,Validators.minLength(8)]],
+      identificacion1: ['',[Validators.required,Validators.minLength(8),Validators.pattern('[0-9]{11}')]],
       nombres1: ['',[Validators.required]]  ,
       apellidos1: ['',[Validators.required]] ,
       correo1: ['',[Validators.required,Validators.email]],

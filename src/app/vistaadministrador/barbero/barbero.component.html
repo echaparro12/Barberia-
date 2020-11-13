@@ -7,7 +7,7 @@
         <h2>LISTA DE BARBEROS</h2>
       </div>
       <div class="table-responsive">
-        <table class="table table-bordered">
+        <table class="table table-striped table-hover ">
           <thead class="thead-dark ">
             <tr>
               <th>identificacion</th>
@@ -20,16 +20,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>0000</td>
-              <td>Kevin</td>
-              <td>Suarez</td>
-              <td>kevin1@gmail.com</td>
-              <td>******</td>
-              <td><button type="button" class="btn btn-success editbtn" data-toggle="modal" data-target="#editar">
+            <tr *ngFor="let Barberia  of Barberia; let posicion = index"  >
+              <td>{{Barberia.identificacion}}{{posicion}}</td>
+              <td>{{Barberia.nombres}}</td>
+              <td>{{Barberia.apellidos}}</td>
+              <td>{{Barberia.correo}}</td>
+              <td>{{Barberia.pass}}</td>
+
+              <td><button type="button" class="btn btn-success editbtn" data-toggle="modal" data-target="#editar"(click)="editarusuario(posicion)">
                   <span>Editat</span></button>
               </td>
-              <td class="align-items-center"><button type='button' class="btn btn-danger ">
+              <td class="align-items-center"><button type='button' (click)="eliminarusuario(posicion)" class="btn btn-danger ">
                   <span>Eliminar</span></button></td>
             </tr>
           </tbody>
@@ -54,19 +55,19 @@
   
         </div>
         <div class="modal-body">
-          <form [formGroup]="modalform" (ngSubmit)="enviar(modalform.value)">
+          <form [formGroup]="modalform1">
             <div class="col-lg-12">
   
               <div class="form-group">
                 <label>Identificación</label>
-                <input  id="us_id" formControlName="identificacion" maxlength="11" type="text" class="form-control">
-                <span *ngIf= "this.modalform.get('identificacion').errors?.required">
+                <input  formControlName="identificacion" maxlength="11" type="text" class="form-control">
+                <span *ngIf= "this.modalform1.get('identificacion').errors?.required">
                   (Campo obligatorio)
                 </span>
-                <span *ngIf= "this.modalform.get('identificacion').errors?.minlength">
+                <span *ngIf= "this.modalform1.get('identificacion').errors?.minlength">
                   (Completar el campo correctamente)
                 </span>
-                <span *ngIf= "this.modalform.get('identificacion').errors?.pattern">
+                <span *ngIf= "this.modalform1.get('identificacion').errors?.pattern">
                   (solo numero)
                 </span> 
                </div>
@@ -74,7 +75,7 @@
               <div class="form-group">
                 <label>Nombres</label>
                 <input name="nombre" class="form-control" formControlName="nombres">
-                <span *ngIf= "this.modalform.get('nombres').errors?.required">
+                <span *ngIf= "this.modalform1.get('nombres').errors?.required">
                   (Campo obligatorio)
                 </span>
               </div>
@@ -82,7 +83,7 @@
               <div class="form-group">
                 <label>Apellidos</label>
                 <input name="apellido" class="form-control" formControlName="apellidos">
-                <span *ngIf= "this.modalform.get('apellidos').errors?.required">
+                <span *ngIf= "this.modalform1.get('apellidos').errors?.required">
                   (Campo obligatorio)
                 </span>
               </div>
@@ -90,10 +91,10 @@
               <div class="form-group">
                 <label>Correo</label>
                 <input name="correo" class="form-control" type="email" formControlName="correo">
-                <span *ngIf= "this.modalform.get('correo').errors?.required">
+                <span *ngIf= "this.modalform1.get('correo').errors?.required">
                   (Campo obligatorio)
                 </span>
-                <div *ngIf= "this.modalform.get('correo').errors?.email">
+                <div *ngIf= "this.modalform1.get('correo').errors?.email">
                   (Completar el campo correctamente)
                 </div>
               </div>
@@ -101,15 +102,15 @@
               <div class="form-group">
                 <label>Contraseña</label>
                 <input class="form-control" type="password" formControlName="pass">
-                <span *ngIf= "this.modalform.get('pass').errors?.required">
+                <span *ngIf= "this.modalform1.get('pass').errors?.required">
                   (Campo obligatorio)
                 </span>
-                <span *ngIf= "this.modalform.get('pass').errors?.minlength">
+                <span *ngIf= "this.modalform1.get('pass').errors?.minlength">
                   (minimo 8 caracteres)
                 </span>            
               </div>
   
-              <button type="submit" [disabled]="modalform.invalid"  name="btncalcular" class="btn btn-primary" >Registrar</button>
+              <button type="submit" [disabled]="modalform1.invalid" (click)="agregar()"   name="btncalcular" class="btn btn-primary" >Registrar</button>
             </div>
   
           </form>
@@ -138,57 +139,57 @@
   
         </div>
         <div class="modal-body">
-          <form [formGroup]="editarmodal" (ngSubmit)="enviar(editarmodal.value)">
+          <form [formGroup]="editarmodal">
             <div class="col-lg-12">
   
               <div class="form-group">
                 <label>Identificación</label>
-                <input  id="us_id" formControlName="identificacion" maxlength="11" type="text" class="form-control">
-                <span *ngIf= "this.editarmodal.get('identificacion').errors?.required">
+                <input  id="us_id" formControlName="identificacion1" maxlength="11" type="text" class="form-control">
+                <span *ngIf= "this.editarmodal.get('identificacion1').errors?.required">
                   (Campo obligatorio)
                 </span>
-                <span *ngIf= "this.editarmodal.get('identificacion').errors?.minlength">
+                <span *ngIf= "this.editarmodal.get('identificacion1').errors?.minlength">
                   (Completar el campo correctamente)
                 </span>
-                <span *ngIf= "this.editarmodal.get('identificacion').errors?.pattern">
+                <span *ngIf= "this.editarmodal.get('identificacion1').errors?.pattern">
                   (solo numero)
                 </span> 
                </div>
   
               <div class="form-group">
                 <label>Nombres</label>
-                <input name="nombre" class="form-control" formControlName="nombres">
-                <span *ngIf= "this.editarmodal.get('nombres').errors?.required">
+                <input name="nombre" class="form-control" formControlName="nombres1">
+                <span *ngIf= "this.editarmodal.get('nombres1').errors?.required">
                   (Campo obligatorio)
                 </span>
               </div>
   
               <div class="form-group">
                 <label>Apellidos</label>
-                <input name="apellido" class="form-control" formControlName="apellidos">
-                <span *ngIf= "this.editarmodal.get('apellidos').errors?.required">
+                <input name="apellido" class="form-control" formControlName="apellidos1">
+                <span *ngIf= "this.editarmodal.get('apellidos1').errors?.required">
                   (Campo obligatorio)
                 </span>
               </div>
   
               <div class="form-group">
                 <label>Correo</label>
-                <input name="correo" class="form-control" type="email" formControlName="correo">
-                <span *ngIf= "this.editarmodal.get('correo').errors?.required">
+                <input name="correo" class="form-control" type="email" formControlName="correo1">
+                <span *ngIf= "this.editarmodal.get('correo1').errors?.required">
                   (Campo obligatorio)
                 </span>
-                <div *ngIf= "this.editarmodal.get('correo').errors?.email">
+                <span *ngIf= "this.editarmodal.get('correo1').errors?.email">
                   (Completar el campo correctamente)
-                </div>
+                </span>
               </div>
   
               <div class="form-group">
                 <label>Contraseña</label>
-                <input class="form-control" type="password" formControlName="pass">
-                <span *ngIf= "this.editarmodal.get('pass').errors?.required">
+                <input class="form-control" type="password" formControlName="pass1">
+                <span *ngIf= "this.editarmodal.get('pass1').errors?.required">
                   (Campo obligatorio)
                 </span>
-                <span *ngIf= "this.editarmodal.get('pass').errors?.minlength">
+                <span *ngIf= "this.editarmodal.get('pass1').errors?.minlength">
                   (minimo 8 caracteres)
                 </span>            
               </div>
