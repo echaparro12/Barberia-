@@ -1,0 +1,23 @@
+[
+    {
+      "Identificacion": 1,
+      "Nombre": "admin",
+      "Apellido": "admin",
+      "Correo":"admin@gmail.com",
+      "contraseña":"123456789"
+    },
+    {
+      "Id": 2,
+      "Nombre": "mario",
+      "Apellido": "lopez",
+      "Correo":"m@gmail.com",
+      "contraseña":"123456789"                                                                    
+    },
+    {
+      "Id": 3,
+      "Nombre": "kevin",
+      "Apellido": "suarez",
+      "Correo":"kevin@gmail.com",
+      "contraseña":"123456789"                                                                    
+    }
+  ]

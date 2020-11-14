@@ -1,0 +1,50 @@
+[
+    {
+    "Corte": "Corte tipo Leñador",
+    "Precio": 12000
+    },
+    {
+    "Corte": "Corte tipo Militar",
+    "Precio": 8000
+    },
+    {
+    "Corte": "Corte tipo 7 sencillo",
+    "Precio": 8000
+    },
+    {
+    "Corte": "Corte tipo 7 con lineas y degradado",
+    "Precio": 9000
+    },
+    {
+    "Corte": "Diseño de barba",
+    "Precio": 12000
+    },
+    {
+    "Corte": "Diseño de cortes con figuras",
+    "Precio": 9000
+    },
+    {
+    "Corte": "Corte con diseño de cejas",
+    "Precio": 10000
+    },
+    {
+    "Corte": "Corte tipo V sencillo",
+    "Precio": 9000
+    },
+    {
+    "Corte": "Corte tipo V con linea",
+    "Precio": 10000
+    },
+    {
+    "Corte": "Corte texture sencillo",
+    "Precio": 11000
+    },
+    {
+    "Corte": "Corte texture con linea",
+    "Precio": 12000
+    },
+    {
+    "Corte": "Corte con diseño de barba y figuras",
+    "Precio": 20000
+    }
+  ]
