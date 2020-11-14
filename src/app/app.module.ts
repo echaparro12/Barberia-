@@ -20,6 +20,8 @@ import { MiscitasComponent } from './vistaclientes/miscitas/miscitas.component';
 import { MisdatosComponent } from './vistaclientes/misdatos/misdatos.component';
 import { TurnosComponent } from './vistabarbero/turnos/turnos.component';
 import { CitasUComponent } from './vistaclientes/citas-u/citas-u.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { CitasUComponent } from './vistaclientes/citas-u/citas-u.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule
   ],
   providers: [],

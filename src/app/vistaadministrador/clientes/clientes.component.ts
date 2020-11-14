@@ -49,7 +49,6 @@ editar(){
   this.Usuarios[this.posicioneditar].correo=this.editarmodal.value.correo1
   this.Usuarios[this.posicioneditar].contraseña=this.editarmodal.value.pass1
 
-
 }
 
 editarusuario(posicion:number){
@@ -70,4 +69,8 @@ editarusuario(posicion:number){
   eliminarusuario(posicion:number){
     this.Usuarios.splice(posicion,1)// posicion, cantidad de elementos
     }
+
+    onlyNumberKey(event) {
+      return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57;}
+
 }
