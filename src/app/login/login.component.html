@@ -43,7 +43,7 @@
 
             <div class="form-group">
               <label>Identificación</label>
-              <input  id="us_id" formControlName="identificacion" (keypress)="onlyNumberKey($event)"  maxlength="11" type="text" class="form-control">
+              <input  id="us_id" formControlName="identificacion" (keypress)="onlyNumberKey($event)" value="123123" maxlength="11" type="text" class="form-control">
               <div *ngIf= "this.modalform.get('identificacion').errors?.required && this.modalform.get('identificacion').errors?.numerospositivos" class="alert alert-danger" role="alert">
                 (Campo obligatorio)
               </div>

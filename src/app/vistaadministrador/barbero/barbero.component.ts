@@ -12,7 +12,7 @@ export class BarberoComponent implements OnInit {
   posicioneditar:number
   editarmodal:FormGroup
   modalform1:FormGroup 
-   constructor(private _builder:FormBuilder) { 
+   constructor(private _builder:FormBuilder ) { 
 
     this.modalform1 = this._builder.group({
       identificacion: ['',[Validators.required,Validators.minLength(11),Validators.pattern('[0-9]{11}')]],
@@ -29,44 +29,41 @@ export class BarberoComponent implements OnInit {
       correo1: ['',[Validators.required,Validators.email]],
       pass1: ['',[Validators.required,Validators.minLength(8)]],
     })
+
+ 
+   
   }
+ 
 
   ngOnInit(): void {
   }
 
-  agregar(){
-    this.Barberia.push(this.modalform1.value)
+  agregar(values){
+    let txtid:string = values.identificacion;
+    let txtnombre:string = values.nombres;
+    let txtapellido:string = values.apellidos;
+    let txtcorreo:string = values.correo;
+    let txtcontraseña:string = values.pass;
+
+    let usuario =[{
+    lid:txtid,
+    lnombre:txtnombre,
+    lapellido:txtapellido,
+    lcorreo:txtcorreo,
+    lpassword:txtcontraseña
+    }]
+
+    let validar = JSON.parse(localStorage.getItem('AdminBarbero'))
+    if (validar !== null){
+      validar.push(usuario)
+      localStorage.setItem('AdminBarbero',JSON.stringify(validar))
+    }else{
+      localStorage.setItem('AdminBarbero',JSON.stringify(usuario))
+    }
     this.modalform1.reset()
   }
 
-  
-editar(){
-  //ubico en la lista los nuevos datos en la posicion indicada
-  this.Barberia[this.posicioneditar].identificacion=this.editarmodal.value.identificacion1
-  this.Barberia[this.posicioneditar].nombre=this.editarmodal.value.nombres1
-  this.Barberia[this.posicioneditar].apellido=this.editarmodal.value.apellidos1
-  this.Barberia[this.posicioneditar].correo=this.editarmodal.value.correo1
-  this.Barberia[this.posicioneditar].contraseña=this.editarmodal.value.pass1
-
-
-}
-
-editarusuario(posicion:number){
-  /// mmetodo para obetener la posicion de la persona ingresar y subir los datos al formulario para su edicion
-    this.editarmodal.setValue({
-      identificacion1:this.Barberia[posicion].identificacion,
-      nombres1:this.Barberia[posicion].nombre,
-      apellidos1:this.Barberia[posicion].apellido,
-      correo1:this.Barberia[posicion].correo,
-      pass1:this.Barberia[posicion].contraseña
-    })
-    this.posicioneditar=posicion
-    console.log(this.editarmodal)
-    console.log(this.posicioneditar)
-  }
-
-
-  eliminarusuario(posicion:number){
-    this.Barberia.splice(posicion,1)// posicion, cantidad de elementos
-    }
+  onlyNumberKey(event) {
+    return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57;}
+ 
 }

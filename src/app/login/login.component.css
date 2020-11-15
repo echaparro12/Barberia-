@@ -136,3 +136,6 @@ body, html {
       color: rgb(12, 97, 33);
   }
     
+  .alert{
+    padding: 1%;
+   }

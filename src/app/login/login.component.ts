@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,Validator, Validators } from '@angular/forms';
-import { CanActivate, ActivatedRouteSnapshot, Router, RouterStateSnapshot} from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { validacionesPropias } from '../class/validaciones-propias';
+import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent} from '../vistaprincipal/home/home.component';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +12,11 @@ import { validacionesPropias } from '../class/validaciones-propias';
 })
 export class LoginComponent implements OnInit {
 
+
   modalform:FormGroup 
   login:FormGroup 
   lista: any = {};
-
-  constructor(private _builder:FormBuilder,private http: HttpClient,private router:Router) { 
+  constructor(private _builder:FormBuilder,private http: HttpClient ) { 
     this.modalform=this._builder.group({
       identificacion: ['',[Validators.required,Validators.minLength(11),validacionesPropias.numerospositivos]],
       nombres: ['',[Validators.required]]  ,
@@ -37,16 +38,12 @@ export class LoginComponent implements OnInit {
         console.log('problemas');
       }
     );
-    
+
   
   }
 
   ngOnInit(): void {
   }
-
-
-
-
 
   enviar(values){
     
@@ -85,31 +82,21 @@ export class LoginComponent implements OnInit {
     let txtcorreo:string = values.correo;
     let txtcontraseña:string = values.pass;
 
-    let usuario ={
+    let usuario =[{
     lid:txtid,
     lnombre:txtnombre,
     lapellido:txtapellido,
     lcorreo:txtcorreo,
     lpassword:txtcontraseña
-    }
-    let usuarion ={
-      lid:txtid,
-      lnombre:txtnombre,
-      lapellido:txtapellido,
-      lcorreo:txtcorreo,
-      lpassword:txtcontraseña
-      }
+    }]
 
-    let validar = localStorage.getItem('usuario')
-    let  dato = [];
-    localStorage.setItem("usuario",JSON.stringify(usuario));
-
+    let validar = JSON.parse(localStorage.getItem('usuario'))
     if (validar !== null){
-       dato = JSON.parse(localStorage.getItem('usuario'));
-       console.log((dato))
+      validar.push(usuario)
+      localStorage.setItem('usuario',JSON.stringify(validar))
+    }else{
+      localStorage.setItem('usuario',JSON.stringify(usuario))
     }
-    dato.push(usuarion)
-    localStorage.setItem('usuario',JSON.stringify(dato))
     this.modalform.reset()
   }
 

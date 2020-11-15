@@ -10,7 +10,7 @@
     </div>
 
     <div class="col-md-6">
-      <form [formGroup]="myform" (ngSubmit)="enviar()">
+      <form [formGroup]="myform" (ngSubmit)="enviardatoslocal(myform.value)">
 
         <div class="form-group">
           <label>Tipo de Identificación</label>
@@ -23,7 +23,7 @@
               <option value="PSP">Pasaporte</option>
             </select>
           </div>
-          <div *ngIf="this.myform.get('tipodocumento').errors?.required">
+          <div wi *ngIf="this.myform.get('tipodocumento').errors?.required" class="alert alert-danger" role="alert">
             (Campo obligatorio)
           </div>
         </div>
@@ -31,19 +31,19 @@
         <div class="form-group">
           <label>Identificación</label>
           <input id="us_id" formControlName="identificacion" (keypress)="onlyNumberKey($event)" maxlength="11" type="text" class="form-control">
-          <span *ngIf="this.myform.get('identificacion').errors?.required">
+          <div *ngIf="this.myform.get('identificacion').errors?.required"class="alert alert-danger" role="alert">
             (Campo obligatorio)
-          </span>
-          <span *ngIf="this.myform.get('identificacion').errors?.minlength">
+          </div>
+          <div *ngIf="this.myform.get('identificacion').errors?.minlength"class="alert alert-danger" role="alert">
             (Completar el campo correctamente)
-          </span>
+          </div>
         </div>
 
 
         <div class="form-group">
           <label>Nombre(s) & Apellidos</label>
           <input type="text" formControlName="nombreapellidos" class="form-control">
-          <div *ngIf="this.myform.get('nombreapellidos').errors?.required">
+          <div *ngIf="this.myform.get('nombreapellidos').errors?.required"class="alert alert-danger" role="alert">
             (Campo obligatorio)
           </div>
         </div>
@@ -52,10 +52,10 @@
         <div class="form-group">
           <label>Correo</label>
           <input type="text" formControlName="correo" class="form-control">
-          <div *ngIf="this.myform.get('correo').errors?.required">
+          <div *ngIf="this.myform.get('correo').errors?.required"class="alert alert-danger" role="alert">
             (Campo obligatorio)
           </div>
-          <div *ngIf="this.myform.get('correo').errors?.email">
+          <div *ngIf="this.myform.get('correo').errors?.email"class="alert alert-danger" role="alert">
             (Completar el campo correctamente)
           </div>
         </div>
@@ -63,12 +63,12 @@
         <div class="form-group">
           <label>Celular</label>
           <input type="text" formControlName="telefono" maxlength="10" (keypress)="onlyNumberKey($event)" class="form-control">
-          <span *ngIf="this.myform.get('telefono').errors?.required">
+          <div *ngIf="this.myform.get('telefono').errors?.required"class="alert alert-danger" role="alert">
             (Campo obligatorio)
-          </span>
-          <span *ngIf="this.myform.get('telefono').errors?.minlength">
+          </div>
+          <div *ngIf="this.myform.get('telefono').errors?.minlength"class="alert alert-danger" role="alert">
             (Completar el campo correctamente)
-          </span>
+          </div>
         </div>
 
         <div class="form-group">
@@ -80,7 +80,7 @@
             <option value="Reclamo">Reclamo</option>
             <option value="Sugerencia">Sugerencia</option>
           </select>
-          <div *ngIf="this.myform.get('tiposolicitud').errors?.required">
+          <div *ngIf="this.myform.get('tiposolicitud').errors?.required"class="alert alert-danger" role="alert">
             (Campo obligatorio)
           </div>
         </div>
@@ -90,13 +90,13 @@
           <div>
             <textarea formControlName="mensaje" class="form-control"></textarea>
           </div>
-          <div *ngIf="this.myform.get('mensaje').errors?.required">
+          <div *ngIf="this.myform.get('mensaje').errors?.required"class="alert alert-danger" role="alert">
             (Campo obligatorio)
           </div>
-          <div *ngIf="this.myform.get('mensaje').errors?.minlength">
+          <div *ngIf="this.myform.get('mensaje').errors?.minlength"class="alert alert-danger" role="alert">
             (minimo 10 caracteres)
           </div>
-          <div *ngIf="this.myform.get('mensaje').errors?.maxlength">
+          <div *ngIf="this.myform.get('mensaje').errors?.maxlength"class="alert alert-danger" role="alert">
             (Maximo 500 caracteres)
           </div>
 

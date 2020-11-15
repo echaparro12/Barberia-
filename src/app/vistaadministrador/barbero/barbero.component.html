@@ -55,12 +55,12 @@
   
         </div>
         <div class="modal-body">
-          <form [formGroup]="modalform1">
+          <form [formGroup]="modalform1" (ngSubmit)="agregar(modalform1.value)">
             <div class="col-lg-12">
   
               <div class="form-group">
                 <label>Identificación</label>
-                <input  formControlName="identificacion" maxlength="11" type="text" class="form-control">
+                <input  formControlName="identificacion" maxlength="11" (keypress)="onlyNumberKey($event)" type="text" class="form-control">
                 <div *ngIf= "this.modalform1.get('identificacion').errors?.required"class="alert alert-danger" role="alert">
                   (Campo obligatorio)
                 </div>
@@ -110,7 +110,7 @@
                 </div>            
               </div>
   
-              <button type="submit" [disabled]="modalform1.invalid" (click)="agregar()"   name="btncalcular" class="btn btn-primary" >Registrar</button>
+              <button type="submit" [disabled]="modalform1.invalid"    name="btncalcular" class="btn btn-primary" >Registrar</button>
             </div>
   
           </form>

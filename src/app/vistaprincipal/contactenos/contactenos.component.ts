@@ -23,13 +23,37 @@ export class ContactenosComponent implements OnInit {
     })
   }
 
-  enviar(){
-    this.Contactenos.push(this.myform.value)
-    console.log(this.Contactenos)
+  enviardatoslocal(values){
+    let txttipoid:string = values.tipodocumento;
+    let txtid:string = values.identificacion;
+    let txtnombreapellido:string = values.nombreapellidos;
+    let txtcorreo:string = values.correo;
+    let txttelefono:string = values.telefono;
+    let txttiposolicitud:string = values.tiposolicitud;
+    let txtmensaje:string = values.mensaje;
+
+    let contacto =[{
+    ltipoid:txttipoid,
+    ltid:txtid,
+    lnombreapellido:txtnombreapellido,
+    ltelefono:txttelefono,
+    lcorreo:txtcorreo,
+    ltiposolicitud:txttiposolicitud,
+    lmensaje:txtmensaje
+    }]
+
+    let validar = JSON.parse(localStorage.getItem('contacto'))
+    if (validar !== null){
+      validar.push(contacto)
+      localStorage.setItem('contacto',JSON.stringify(validar))
+    }else{
+      localStorage.setItem('contacto',JSON.stringify(contacto))
+    }
+   
     this.myform.reset()
   }
   
-  
+ 
   
   
   onlyNumberKey(event) {

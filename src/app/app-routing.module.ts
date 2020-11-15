@@ -11,6 +11,7 @@ import { CitasUComponent} from './vistaclientes/citas-u/citas-u.component';
 import { MiscitasComponent}from './vistaclientes/miscitas/miscitas.component';
 import { MisdatosComponent}from './vistaclientes/misdatos/misdatos.component';
 import { TurnosComponent } from "./vistabarbero/turnos/turnos.component";
+
 const routes: Routes = [
   {path:'home', component: HomeComponent },
   {path:'login', component: LoginComponent },

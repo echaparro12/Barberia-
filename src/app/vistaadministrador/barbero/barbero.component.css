@@ -6,3 +6,6 @@ td{
     text-align: center;
     text-justify:distribute-all-lines ;
 }
+.alert{
+    padding: 1%;
+   }
